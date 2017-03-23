@@ -1,15 +1,31 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+import Home from '@/components/Home'
+import TimeEntries from '@/components/TimeEntries.vue'
+import LogTime from '@/components/LogTime.vue'
+import NotFound from '@/components/404'
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
-  ]
+Vue.use(VueRouter);
+
+const routes = [{
+  path : '/',
+  component : Home
+},{
+  path : '/home',
+  component : Home
+},{
+  path : '/time-entries',
+  component : TimeEntries,
+  children : [{
+    path : 'log-time',
+    component : LogTime,
+  }]
+},{
+  path : '*',
+  component : NotFound
+}];
+
+export default new VueRouter({
+  routes
 })

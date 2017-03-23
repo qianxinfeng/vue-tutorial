@@ -1,5 +1,5 @@
 {
-  "name": "webpack-simple",
+  "name": "vue-tutorial",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "xinfeng_qian <xinfeng_qian@hansight.com>",
@@ -9,8 +9,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "vue": "^2.2.2",
-    "vue-router": "^2.2.0"
+    "vue-resource": "^1.2.1",
+    "vue-router": "^2.2.0",
+    "vuex": "^2.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
