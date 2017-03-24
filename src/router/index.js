@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '@/components/Home'
 import TimeEntries from '@/components/TimeEntries.vue'
-import LogTime from '@/components/LogTime.vue'
+//import LogTime from '@/components/LogTime.vue'
 import NotFound from '@/components/404'
 
 Vue.use(VueRouter);
@@ -19,7 +19,8 @@ const routes = [{
   component : TimeEntries,
   children : [{
     path : 'log-time',
-    component : LogTime,
+    // 懒加载
+    component : resolve => require(['@/components/LogTime.vue'],resolve),
   }]
 },{
   path : '*',
