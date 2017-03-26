@@ -19,7 +19,7 @@ const routes = [{
   component : TimeEntries,
   children : [{
     path : 'log-time',
-    // 异步加载组件（使用webpack的方式）
+    // 异步加载组件（使用webpack分割代码的方式）
     component : resolve => require(['@/components/LogTime.vue'],resolve),
   }]
 },{
