@@ -1,7 +1,5 @@
-// 增加总时间或者减少总时间
-export const ADD_TOTAL_TIME = 'ADD_TOTAL_TIME';
-export const DEC_TOTAL_TIME = 'DEC_TOTAL_TIME';
+// 获取所有英雄
+export const GET_ALL_HEROES = 'GET_ALL_HEROES';
 
-// 新增和删除一条计划
-export const SAVE_PLAN = 'SAVE_PLAN';
-export const DELETE_PLAN = 'DELETE_PLAN';
+export const SAVE_HEROE = 'SAVE_HEROE';
+export const DELETE_HEROE = 'DELETE_HEROE';

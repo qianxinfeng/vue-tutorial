@@ -38,8 +38,28 @@ module.exports = {
         include: [resolve('src'), resolve('test')]
       },
       {
+        test: /\.html$/,
+        use: [{
+          loader: 'html-loader',
+          options: {
+            root: resolve('src'),
+            attrs: ['img:src', 'link:href']
+          }
+        }]
+      },
+      {
+        test: /favicon\.png$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          }
+        }]
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+        exclude: /favicon\.png$/,
         query: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')

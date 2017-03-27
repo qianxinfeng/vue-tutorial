@@ -1,35 +1,40 @@
 <template>
-  <div id="wrapper">
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <i class="glyphicon glyphicon-time"></i>
-          计划板
-        </a>
-        <ul class="nav navbar-nav">
-          <li><router-link to="/home">首页</router-link></li>
-          <li><router-link to="/time-entries">计划列表</router-link></li>
-        </ul>
-      </div>
-    </nav>
-    <div class="container">
-      <div class="col-sm-3">
-        <sidebar></sidebar>
-      </div>
-      <div class="col-sm-9">
-        <router-view></router-view>
-      </div>
+  <div id="app">
+    <el-menu theme="dark" mode="horizontal">
+      <el-menu-item index="1">
+        <router-link to="/dashboard">仪表盘</router-link>
+      </el-menu-item>
+      <el-menu-item index="2">
+        <router-link to="/heroes">英雄列表</router-link>
+      </el-menu-item>
+    </el-menu>
+    <div class="content">
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import Sidebar from './components/Sidebar.vue'
-export default {
-  name: 'app',
-  components: {
-    Sidebar
+  export default {
+    name: 'app',
+    components: {
+
+    }
   }
-}
 </script>
+
+<style lang="less">
+  body {
+    margin: 0;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+    overflow: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .el-menu {
+    a {
+      text-decoration: none;
+    }
+  }
+</style>
 

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '@/components/Home'
-import TimeEntries from '@/components/TimeEntries.vue'
+import Dashboard from '@/components/Dashboard.vue'
+import Heroes from '@/components/Heroes.vue'
 //import LogTime from '@/components/LogTime.vue'
 import NotFound from '@/components/404'
 
@@ -10,18 +10,18 @@ Vue.use(VueRouter);
 
 const routes = [{
   path : '/',
-  component : Home
+  component : Dashboard
 },{
-  path : '/home',
-  component : Home
+  path : '/dashboard',
+  component : Dashboard
 },{
-  path : '/time-entries',
-  component : TimeEntries,
-  children : [{
+  path : '/heroes',
+  component : Heroes,
+  /*children : [{
     path : 'log-time',
     // 异步加载组件（使用webpack分割代码的方式）
     component : resolve => require(['@/components/LogTime.vue'],resolve),
-  }]
+  }]*/
 },{
   path : '*',
   component : NotFound
