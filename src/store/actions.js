@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import * as types from './mutation-types'
-
-const apiUrl = "http://localhost:3000/";
+import {apiUrl} from '@/api'
 
 export default {
   getAllHeroes({ commit }) {
@@ -13,18 +12,22 @@ export default {
   deleteHeroe({ commit }, id) {
     return Vue.http.delete(apiUrl + `heroes/${id}`)
       .then(response => {
-        commit(types.DELETE_HEROE, id)
+        commit(types.DELETE_HEROE, id);
       })
   },
   saveHeroe({ commit }, heroe) {
-    if (!heroe.id) {
-      heroe.id=new Date().getTime();
-      return Vue.http.post(apiUrl + `heroes`, heroe)
-        .then(response => {
-          commit(types.SAVE_HEROE, heroe)
-        })
+    let heroeNew=Object.assign({},heroe);
+    if (!heroeNew.id) {
+      return Vue.http.post(apiUrl + `heroes`,heroeNew)
+      .then(response => {
+        heroeNew.id=response.data.id;
+        commit(types.SAVE_HEROE, heroeNew);
+      });
     } else {
-
+      return Vue.http.put(apiUrl + `heroes/${heroeNew.id}`,heroeNew)
+      .then(response => {
+        commit(types.SAVE_HEROE, heroeNew);
+      });
     }
   }
 };

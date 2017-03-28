@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import * as types from './mutation-types'
 
 export default {
@@ -5,7 +6,13 @@ export default {
     state.heroes = heroes;
   },
   [types.SAVE_HEROE] (state, heroe) {
-    state.heroes.push(heroe);
+     let heroes=state.heroes;
+    let index=heroes.findIndex(x=>x.id==heroe.id);
+    if(index==-1){
+      heroes.push(heroe);
+    }else{
+      Vue.set(heroes, index, heroe)
+    }
   },
   [types.DELETE_HEROE] (state, id) {
     let heroes=state.heroes;

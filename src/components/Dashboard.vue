@@ -16,7 +16,7 @@
         </div>
         <el-row :gutter="20">
           <el-col :span="4" v-for="(hero,index) in topHeroes" :key="hero.id">
-            <div class="top-hero">{{hero.name}} </div>
+            <div class="top-hero" @click="edit(hero.id)">{{hero.name}} </div>
           </el-col>
         </el-row>
       </el-card>
@@ -36,13 +36,13 @@
         return this.$store.getters.topHeroes;
       }
     },
-    created() {
-      this.$store.dispatch('getAllHeroes');
-    },
     methods: {
       search() {
 
         this.searchKey = '';
+      },
+      edit(id){
+       this.$router.push({ name: 'heroeDetail', params: {id}});
       }
     }
   }

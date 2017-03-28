@@ -17,9 +17,9 @@
 <script>
   export default {
     name: 'app',
-    components: {
-
-    }
+    created() {
+      this.$store.dispatch('getAllHeroes');
+    },
   }
 </script>
 
