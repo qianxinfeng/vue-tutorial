@@ -10,9 +10,9 @@
     "mock": "json-server --watch static/db.json"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "element-ui": "^1.2.5",
     "vue": "^2.2.2",
-    "vue-resource": "^1.2.1",
     "vue-router": "^2.2.0",
     "vuex": "^2.2.1"
   },

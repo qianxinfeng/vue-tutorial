@@ -6,7 +6,7 @@
 
 > 3.用vuex管理我们的数据流
 
-> 4.使用vue-resource请求我们的mock服务
+> 4.使用axios请求我们的mock服务（vue不在维护vue-resource，想看vue-resource版本请切换分支）
 
 > 5.最终整合成一个简单的curd应用
 

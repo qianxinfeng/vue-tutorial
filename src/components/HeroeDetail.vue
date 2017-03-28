@@ -13,7 +13,8 @@
     </el-form>
 </template>
 <script>
-import {apiUrl} from '@/api'
+import {apiUrl} from '@/api';
+import ajax from 'axios';
   export default {
     data(){
       return {
@@ -23,7 +24,7 @@ import {apiUrl} from '@/api'
     created(){
       let vm=this;
       let id=vm.$route.params.id;
-      vm.$http.get(apiUrl+`heroes/${id}`).then((response)=>{
+      ajax.get(apiUrl+`heroes/${id}`).then((response)=>{
        vm.heroe= response.data;
       });
     },
