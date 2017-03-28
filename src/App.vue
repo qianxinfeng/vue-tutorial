@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <el-menu theme="dark" mode="horizontal">
-      <el-menu-item index="1">
-        <router-link to="/dashboard">仪表盘</router-link>
+    <el-menu theme="dark" mode="horizontal" :router="true" :default-active="currentRouter">
+      <el-menu-item index="/dashboard">
+        仪表盘
       </el-menu-item>
-      <el-menu-item index="2">
-        <router-link to="/heroes">英雄列表</router-link>
+      <el-menu-item index="/heroes">
+       英雄列表
       </el-menu-item>
     </el-menu>
     <div class="content">
@@ -17,9 +17,14 @@
 <script>
   export default {
     name: 'app',
+    computed:{
+       currentRouter(){
+         return this.$route.path;
+       }
+    },
     created() {
       this.$store.dispatch('getAllHeroes');
-    },
+    }
   }
 </script>
 
