@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-menu theme="dark" mode="horizontal" :router="true" :default-active="currentRouter">
+    <el-menu theme="dark" mode="horizontal" :router="true" :default-active="menuActived">
       <el-menu-item index="/dashboard">
         仪表盘
       </el-menu-item>
@@ -18,8 +18,9 @@
   export default {
     name: 'app',
     computed:{
-       currentRouter(){
-         return this.$route.path;
+       menuActived(){
+         let currentRoute=this.$route.path;
+         return currentRoute=="/"?"/dashboard":currentRoute;
        }
     },
     created() {
