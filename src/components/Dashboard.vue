@@ -5,13 +5,7 @@
         <div slot="header">
           <span>查询</span>
         </div>
-        <el-autocomplete
-      v-model="searchKey"
-      custom-item="filter-item"
-      :fetch-suggestions="filterHeroes"
-      placeholder="名称"
-      @select="edit" icon="search"
-    ></el-autocomplete>
+        <el-autocomplete v-model="searchKey" custom-item="filter-item" :fetch-suggestions="filterHeroes" placeholder="名称" @select="edit" icon="search"></el-autocomplete>
       </el-card>
     </el-col>
     <el-col :span="16">
@@ -30,23 +24,26 @@
 </template>
 
 <script>
-import Vue from 'vue';
-Vue.component('filter-item', {
+  import Vue from 'vue';
+  Vue.component('filter-item', {
     functional: true,
-    render: function (h, ctx) {
+    render: function(h, ctx) {
       var item = ctx.props.item;
       return h('li', ctx.data, [
-        h('div', { }, [item.name])
+        h('div', {}, [item.name])
       ]);
     },
     props: {
-      item: { type: Object, required: true }
+      item: {
+        type: Object,
+        required: true
+      }
     }
   });
   export default {
     data() {
       return {
-        searchKey:''
+        searchKey: ''
       };
     },
     computed: {
@@ -58,37 +55,29 @@ Vue.component('filter-item', {
       }
     },
     methods: {
-      filterHeroes(key,cb){
-        let vm=this;
-        let heroes=vm.heroes;
-        let results=key?heroes.filter(obj=>obj.name.indexOf(key)!=-1):heroes;
+      filterHeroes(key, cb) {
+        let vm = this;
+        let heroes = vm.heroes;
+        let results = key ? heroes.filter(obj => obj.name.indexOf(key) != -1) : heroes;
         cb(results);
       },
-      edit(item){
-       this.$router.push({ name: 'heroeDetail', params: {id:item.id}});
-      }
-    },
-    components:{
-      "filter-item":{
-        functional: true,
-    render: function (h, ctx) {
-      var item = ctx.props.item;
-      return h('li', ctx.data, [
-        h('div', { }, [item.name])
-      ]);
-    },
-    props: {
-      item: { type: Object, required: true }
-    }
+      edit(item) {
+        this.$router.push({
+          name: 'heroeDetail',
+          params: {
+            id: item.id
+          }
+        });
       }
     }
   }
 </script>
 
 <style lang="less" scoped>
-  .el-autocomplete{
-    display:block;
+  .el-autocomplete {
+    display: block;
   }
+
   .top-hero {
     text-align: center;
     line-height: 100px;
